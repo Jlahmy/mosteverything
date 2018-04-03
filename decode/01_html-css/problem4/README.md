@@ -14,11 +14,14 @@ When you are done, take a screenshot and place the screenshot in the submission 
 
 Your file should have this structure:
 
-```
+<!DOCTYPE html>
 <html>
-   <body>
-      ...
-   </body>
-</html>
-```
+<body>
 
+<h1>hello</h1>
+<h2>there </h2>
+
+<p>My first paragraph.</p>
+
+</body>
+</html>

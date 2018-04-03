@@ -1,0 +1,21 @@
+ 
+#title {  
+    text-align: center;
+    font-size: 50px;
+}
+
+#subtitle {
+    text-align: center;
+    font-size: 25px;
+}
+#content{
+    text-decoration: underline; 
+    font-family: monospace;
+    font-size: 15px;
+}
+
+ul {
+    list-style: none;
+    text-decoration: underline; 
+    font-family: monospace;
+}
