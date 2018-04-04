@@ -3,26 +3,50 @@ var assert = require('assert');
 // we need 8 test cases. I've provided the first 2
 let inputs = [
   ["hello", 4],
-  ["", 2]
-]
+  ["", 2],
+  [false, true],
+  ["trash", "monster"],
+  ["3003", 2],
+  ['undefined', "howdie"],
+  ["gutchi", 4],
+  ["booptimus", 5]
+];
 
 let outputs = [
   "o",
-  undefined
-]
-
+  undefined,
+  undefined,
+  undefined,
+  '0',
+  undefined,
+  'h',
+  'i'
+];
 /*
-Make this function return the letter at the specified position in the string. If no such letter exists, it should return undefined.
+Make this function return the letter at the specified position in the string. 
+If no such letter exists, it should return undefined.
 
 For example:
 f(["hello", 1]); // e
 f(["", 4]); // undefined
 f(["abc", 0]); // a
-
 */
-function f(arr) {
-    
-}
+function f(arr, num) {
+     //Before Operation will be translated to B.O henceforth.
+    if(typeof arr === 'string' && typeof num === 'number') {
+      return arr[num]
+    } else {
+      return undefined
+    };
+
+    console.log("B.O: arr = ", arr);
+    console.log("B.O: num = ", num);
+    console.log("B.O: arr[num] = ", arr[num]);
+
+        //After Operation = A.O
+      
+  
+  };
 
 function runTest(i) {
     var expected = outputs[i];

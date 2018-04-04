@@ -2,11 +2,20 @@ var assert = require('assert');
 
 // we need 5 test cases. 
 let inputs = [
+    'a strIng',
+    'another',
+    'redwood',
+    'cluster bubble',
+    'SAMMICH'
   
 ]
 
 let outputs = [
-  
+  'A String',
+  'Another',
+  'Redwood',
+  'Cluster Bubble',
+  'Sammich'
 ]
 
 /*
@@ -17,6 +26,24 @@ f("ALL YOUR BASE ARE BELONG"); // All Your Base Are Belong
 
 */
 function f(str) {
+    console.log(str)
+
+    let splitStr = str.toLowerCase().split(" ");
+    console.log(splitStr.length)
+
+    for(let i = 0; i < splitStr.length; i++) {
+        console.log(splitStr[i])
+        let letters = splitStr[i].split('');
+        console.log(splitStr[i])
+        letters[0] = letters[0].toUpperCase();
+        letters = letters.join('');
+
+        splitStr[i] = letters
+        console.log(letters)
+        console.log(splitStr)
+    }
+    str = splitStr.join(' ')
+    return str
     
 }
 

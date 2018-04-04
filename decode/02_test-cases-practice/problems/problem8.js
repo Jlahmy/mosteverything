@@ -2,11 +2,20 @@ var assert = require('assert');
 
 // we need 5 test cases. 
 let inputs = [
-  
+  "hello",
+  "test",
+  "como",
+  "tree",
+  "beans"
+
 ]
 
 let outputs = [
-  
+    "olleh",
+    "tset",
+    "omoc",
+    "eert",
+    "snaeb"
 ]
 
 /*
@@ -14,7 +23,12 @@ Make this function return the input string, reversed. For example "hello" would 
 You must use a for loop for this exercise.
 */
 function f(str) {
-    
+
+    let splitStr = str.split("");
+     splitStr.reverse();
+   return splitStr.join("")
+
+
 }
 
 function runTest(i) {
