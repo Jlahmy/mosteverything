@@ -33,8 +33,10 @@ function f(str) {
 
     for(let i = 0; i < splitStr.length; i++) {
         console.log(splitStr[i])
+
         let letters = splitStr[i].split('');
         console.log(splitStr[i])
+        
         letters[0] = letters[0].toUpperCase();
         letters = letters.join('');
 
