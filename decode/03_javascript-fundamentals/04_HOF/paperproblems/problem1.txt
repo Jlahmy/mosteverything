@@ -6,11 +6,11 @@ Specifically:
  - What are the types of the parameters
  - What does it do?
 
-
-
 var evenNumbers = [2, 4, 6, 8, 10];
 var oddNumbers = [3, 5, 7, 9];
 var someNumbers = [1, 2, 3, 4];
+
+
 
 function isEven(x) {
     if(x % 2 == 0) return true;

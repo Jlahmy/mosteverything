@@ -73,13 +73,14 @@ function exceptionalize(f) { // f = 0
 
 function nullify(f) {
 
-   return function foof(arg) {
+  return function foof(arg) {
     try {
         return f(arg)
     } catch (err){
         return null
-    }
-    }
+       };
+    };
+};
     // returns a new function
     // this function takes 1 input, called arg
     // if f(arg) throws an exception, this new function returns null
@@ -93,7 +94,7 @@ function nullify(f) {
     //  g(0) returns null
     //  g(12) throws an exception
     
-}
+
 
 function map(lst, f) { //lst = array / f = function
         let moddedArray = [];

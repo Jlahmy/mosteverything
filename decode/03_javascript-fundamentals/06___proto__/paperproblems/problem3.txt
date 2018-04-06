@@ -11,4 +11,7 @@ You get the following exception:
 
 
 a) Explain what this exception means.
+exception caught an infinite loop error 
 b) Why does this exception exist? What's wrong with a cyclic __proto__ value?
+
+when going into proto a, it point to b, which points to a, which points to b.
