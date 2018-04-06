@@ -4,6 +4,6 @@ function f() {
     return 5;
     return "hello";
 }
-
+//outputs 5
 console.log(f());
 
