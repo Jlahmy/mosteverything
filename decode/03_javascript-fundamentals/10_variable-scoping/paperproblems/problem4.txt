@@ -1,6 +1,7 @@
 Which variables are in scope on the indicated line?
 
 var x = 5;
+
 function f() {
     var y = 8;
     function g() {

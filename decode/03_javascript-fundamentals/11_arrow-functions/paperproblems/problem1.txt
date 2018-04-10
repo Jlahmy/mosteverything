@@ -4,16 +4,31 @@ For each of the following expressions:
 
 a) x => x + 1
 
+    (x) => x + 1  //would +1 x
+
 b) x, y => x * y
+
+    (x, y) => x * y  //multiplies x and y
+
 
 c) x => { x * 2 }
 
+    (x) => { x * 2}   // would *2 x
+
 d) (x, z) => {console.log(z); return x * z}
+
+correct syntax, would console.log and return x * 2
 
 e) x => console.log(z); return x * z
 
+        x => {console.log(z); return x * z}
+
 f) (x) => x * 2
 
+        correct syntax
+
 e) () => console.log("hello")
+
+       would probably console.log...
 
 When you're done, check all your answers in the developer console.

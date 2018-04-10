@@ -2,8 +2,21 @@
 // There should be no arrows by the end
 
 var x = x => x + 1;
+function (x) {
+    x + 1
+}
+
 var y = (x, y) => x + y;
+function (x, y) {
+    x + y
+}
+
 var z = x => {var y = (x * 7) % 2; return y * 2};
+
+function x () {
+    var y = (x * 7) % 2;
+    return y * 2;
+}
 
 module.exports = {x, y, z};
 

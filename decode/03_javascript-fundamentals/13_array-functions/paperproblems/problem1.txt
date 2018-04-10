@@ -14,3 +14,5 @@ var dogs = animals.filter(
                      {return animal.species === 'dog';});
 
 console.log(dogs.length);
+ 
+ 2 it returns an array with 2 values, each value is an dog object
