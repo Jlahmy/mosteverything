@@ -6,13 +6,13 @@ class Shape {
     }
     toString() {
         return this.shapeName + " with area " +
-          this.area() + " and perimeter " + this.permeter();
+          this.area() + " and perimeter " + this.perimeter();
     }
 }
 
-class Square {
+class Square extends Shape {
     constructor(size) {
-        supr("square");
+        super("square");
         this.size = size;
     }
     area() {
@@ -22,5 +22,7 @@ class Square {
        return this.size * 4;
     }
 }
+
+
 
 module.exports = {Shape, Square};

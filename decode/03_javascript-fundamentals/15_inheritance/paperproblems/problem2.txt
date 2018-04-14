@@ -11,3 +11,18 @@ class Shape {
           this.area() + " and perimeter " + this.perimeter();
     }
 }
+
+class Rectangle extends Shape {
+    constructor(sideNum) {
+        super("Rectangle");
+        this.sideNum = sideNum;
+       
+
+    }
+    area(){
+        return this.sideNum * this.sideNum;
+    }
+}
+
+var rect = new Rectangle(4)
+console.log(rect.toString())
