@@ -1,13 +1,14 @@
 // This section contains some game constants. It is not super interesting
-var GAME_WIDTH = 1200; //Original 375
-var GAME_HEIGHT = 800; //Original 500
+var GAME_WIDTH = 1200; 
+var GAME_HEIGHT = 780; 
 
-var ENEMY_WIDTH = 75;
-var ENEMY_HEIGHT = 156; //156
-var MAX_ENEMIES = 3;
 
-var PLAYER_WIDTH = 75;
-var PLAYER_HEIGHT = 54;
+var ENEMY_WIDTH = 123;
+var ENEMY_HEIGHT = 85;
+var MAX_ENEMIES = 2;
+
+var PLAYER_WIDTH = 120;
+var PLAYER_HEIGHT = 160;
 
 // These two constants keep us from using "magic numbers" in our code
 var LEFT_ARROW_CODE = 37;
@@ -23,7 +24,7 @@ var MOVE_DOWN = 'down';
 
 // Preload game images
 var images = {};
-['enemy.png', 'fishies.png', 'player.png'].forEach(imgName => {
+['spookyFish.png', 'OB.png', 'whaleLeft.png', 'whaleRight.png'].forEach(imgName => {
     var img = document.createElement('img');
     img.src = 'images/' + imgName;
     images[imgName] = img;
@@ -38,11 +39,11 @@ class Enemy {
     constructor(xPos) {
         this.x = xPos;
         this.y = -ENEMY_HEIGHT;
-        this.sprite = images['enemy.png'];
+        this.sprite = images['spookyFish.png'];
         console.log("Class enemy", this.y)
         
         // Each enemy should have a different speed
-        this.speed = Math.random() / 2 + 0.25 - .3;
+        this.speed = Math.random() / 2 + 0.20;
     }
     
     update(timeDiff) {
@@ -56,20 +57,24 @@ class Enemy {
 
 class Player {
     constructor() {
-        this.x = 2 * PLAYER_WIDTH;
-        this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10; //Original PLAYER_HEIGHT - 10
-        this.sprite = images['player.png'];
+        this.x = GAME_WIDTH / 2 - PLAYER_WIDTH
+        this.y = GAME_HEIGHT - PLAYER_HEIGHT - 50; //Original PLAYER_HEIGHT - 10
+        this.sprite = images['whaleRight.png'];
     }
     
     // This method is called by the game engine when left/right arrows are pressed
     move(direction) {
         if (direction === MOVE_LEFT && this.x > 0) {
+            this.sprite = images['whaleLeft.png'];
             this.x = this.x - PLAYER_WIDTH;
+
         }
         else if (direction === MOVE_RIGHT && this.x < GAME_WIDTH - PLAYER_WIDTH) {
+            this.sprite = images['whaleRight.png'];
             this.x = this.x + PLAYER_WIDTH;
+        
         }
-        else if(direction === MOVE_DOWN && this.y < 436) {
+        else if(direction === MOVE_DOWN && this.y < 500) {
             this.y = this.y + PLAYER_HEIGHT;
         }
         else if(direction === MOVE_UP && this.y > 5) {
@@ -184,7 +189,7 @@ class Engine {
         this.enemies.forEach(enemy => enemy.update(timeDiff));
         
         // Draw everything!
-        this.ctx.drawImage(images['fishies.png'], 0, 0); // draw the star bg
+        this.ctx.drawImage(images['OB.png'], 0, 0); // draw the star bg
         this.enemies.forEach(enemy => enemy.render(this.ctx)); // draw the enemies
         this.player.render(this.ctx); // draw the player
         
@@ -202,7 +207,7 @@ class Engine {
             // If they are dead, then it's game over!
             this.ctx.font = 'bold 30px Impact';
             this.ctx.fillStyle = '#53990d';
-            this.ctx.fillText(this.score + ' GAME OVER', 5, 30);
+            this.ctx.fillText(this.score + ' ONWARDS! TO GREATNESS!', 5, 30);
         }
         else {
             // If player is not dead, then draw the score
@@ -222,8 +227,8 @@ class Engine {
                 if(
                     element.x + ENEMY_WIDTH > this.player.x  &&
                     element.x < this.player.x + PLAYER_WIDTH &&
-                    element.y + ENEMY_HEIGHT - 100 > this.player.y  &&
-                    element.y - ENEMY_HEIGHT + 100  < this.player.y + PLAYER_HEIGHT
+                    element.y + ENEMY_HEIGHT > this.player.y   &&
+                    element.y - ENEMY_HEIGHT < this.player.y + PLAYER_HEIGHT / 2
                 )
                 return playerDead = true  
          })  
