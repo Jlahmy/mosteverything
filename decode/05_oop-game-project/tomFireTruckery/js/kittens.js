@@ -5,7 +5,7 @@ var GAME_HEIGHT = 780;
 
 var ENEMY_WIDTH = 123;
 var ENEMY_HEIGHT = 85;
-var MAX_ENEMIES = 2;
+var MAX_ENEMIES = 4;
 
 var PLAYER_WIDTH = 120;
 var PLAYER_HEIGHT = 160;
@@ -21,6 +21,8 @@ var MOVE_LEFT = 'left';
 var MOVE_RIGHT = 'right';
 var MOVE_UP = 'up';
 var MOVE_DOWN = 'down';
+
+var mySound;
 
 // Preload game images
 var images = {};
@@ -40,10 +42,9 @@ class Enemy {
         this.x = xPos;
         this.y = -ENEMY_HEIGHT;
         this.sprite = images['spookyFish.png'];
-        console.log("Class enemy", this.y)
         
         // Each enemy should have a different speed
-        this.speed = Math.random() / 2 + 0.20;
+        this.speed = Math.random() / 2;
     }
     
     update(timeDiff) {
@@ -55,10 +56,13 @@ class Enemy {
     }
 }
 
+
+
+
 class Player {
     constructor() {
-        this.x = GAME_WIDTH / 2 - PLAYER_WIDTH
-        this.y = GAME_HEIGHT - PLAYER_HEIGHT - 50; //Original PLAYER_HEIGHT - 10
+        this.x = GAME_WIDTH / 2 - 30
+        this.y = GAME_HEIGHT - PLAYER_HEIGHT * 2.72; //Original PLAYER_HEIGHT - 10
         this.sprite = images['whaleRight.png'];
     }
     
@@ -74,11 +78,11 @@ class Player {
             this.x = this.x + PLAYER_WIDTH;
         
         }
-        else if(direction === MOVE_DOWN && this.y < 500) {
-            this.y = this.y + PLAYER_HEIGHT;
+        else if(direction === MOVE_DOWN && this.y < 570) {
+            this.y = this.y + PLAYER_HEIGHT / 2;
         }
         else if(direction === MOVE_UP && this.y > 5) {
-            this.y = this.y - PLAYER_HEIGHT;
+            this.y = this.y - PLAYER_HEIGHT / 2;
         }
     }
 
@@ -207,7 +211,7 @@ class Engine {
             // If they are dead, then it's game over!
             this.ctx.font = 'bold 30px Impact';
             this.ctx.fillStyle = '#53990d';
-            this.ctx.fillText(this.score + ' ONWARDS! TO GREATNESS!', 5, 30);
+            this.ctx.fillText(this.score + '   Another Time, Another Place', 5, 30);
         }
         else {
             // If player is not dead, then draw the score
@@ -244,4 +248,15 @@ class Engine {
 
 // This section will start the game
 var gameEngine = new Engine(document.getElementById('app'));
-gameEngine.start();
+var openingScreen = document.getElementById("Opening_img");
+var main = document.getElementById('main');
+
+function gameStarted() {
+    openingScreen.style.visibility = "hidden";
+     return gameEngine.start();
+
+}
+// openingScreen.addEventListener('click', gameStarted());
+openingScreen.addEventListener('click', () => {
+main.removeChild(openingScreen)
+gameStarted()})
